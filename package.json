@@ -1,0 +1,19 @@
+{
+  "name": "jm",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha -w",
+    "start": "tsc -w -p tsconfig.json",
+    "doc": "typedoc --out ./docs ./src"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-ws": "^4.0.0",
+    "isomorphic-ws": "^4.0.1",
+    "rambda": "^2.11.2"
+  }
+}
