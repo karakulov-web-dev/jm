@@ -1,24 +1,18 @@
-var express = require("express");
+const express = require("express");
 var app = express();
-var expressWs = require("express-ws")(app);
+require("express-ws")(app);
+const Clients = require("./Clients");
 
-app.get("/", function(req, res, next) {
-  console.log("get route", req.testing);
-  res.end();
-});
+const clients = new Clients();
 
-let client;
+global["clients"] = clients;
 
-app.ws("/", function(ws, req) {
-  client = ws;
+app.ws("/", (ws, req) => {
   console.log(ws);
   console.log(req);
+  clients.newClient(ws);
 });
 
-setInterval(() => {
-  if (client) {
-    client.send("123");
-  }
-}, 5000);
+setInterval(() => {}, 5000);
 
 app.listen(3000);
